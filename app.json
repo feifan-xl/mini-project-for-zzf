@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/dashboard/index",
+    "pages/car/index",
+    "pages/center/index",
+    "pages/detail/index"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/dashboard/index",
+        "text": "首页",
+        "iconPath": "images/index1.png",
+        "selectedIconPath": "images/index.png"
+      },
+      {
+        "pagePath": "pages/car/index",
+        "text": "购物车",
+        "iconPath": "images/cart1.png",
+        "selectedIconPath": "images/cart.png"
+      },
+      {
+        "pagePath": "pages/center/index",
+        "text": "个人中心",
+        "iconPath": "images/center1.png",
+        "selectedIconPath": "images/center.png"
+      }
+    ]
+  },
+  "debug": "true",
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#008842",
+    "navigationBarTitleText": "微信电商",
+    "navigationBarTextStyle": "white"
+  }
+}

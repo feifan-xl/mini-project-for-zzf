@@ -1,0 +1,46 @@
+<scroll-view class='mask'>
+  <!-- 轮播图 -->
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key="{{item.code}}">
+      <swiper-item>
+        <!-- <navigator> -->
+          <image src="{{item.img}}" class="slide-image" bindtap="navSwiper" data-code="{{item.code}}"/>
+        <!-- </navigator> -->
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 商品展示 -->
+  <view class="goods" wx:for="{{goodsInfo}}" wx:key="{{item.code}}" >
+
+    <image src="{{item.img}}" class="goods-img"></image>
+    <text class='goods-des clear-fix'>{{item.name}}</text>
+    <p class="goods-price">￥{{item.price}}</p>
+    <p class='goods-buy' bindtap="buyOne" id="{{index}}">购买</p>
+
+  </view>
+</scroll-view>
+<!-- 购买弹出框 -->
+<view class='bg' style="display: {{display}}"></view>
+
+<view class='buy-now' style="display: {{display}}">
+  <view class='small-img' style="background-image: url({{detailImg}});background-size:100% 100%;"></view>
+  <view class='buy-des'>
+    <text class="des-info">{{name}}</text>
+    <text class="buy-price">￥{{price}}</text>
+  </view>
+  <view class='close-buy'bindtap="closeBuy">X</view>
+  <view class="line"></view>
+  <view class='amount'>
+    <text class="buy-amount">购买数量：</text>
+    <text class='left-amount'>剩余500件</text>
+  </view>
+  <view class='add-minus' >
+    <text class="minus" bindtap="minusAmount" class="{{minusStatus}}">-</text>
+    <input type="number" value="{{buyAmount}}"></input>
+    <text class="add" bindtap="addAmount">+</text>
+  </view>
+  <view class="joinBuy">
+    <view class="join-cart">加入购物车</view>
+    <view class="buy-imd">立即购买</view>
+  </view>
+</view>

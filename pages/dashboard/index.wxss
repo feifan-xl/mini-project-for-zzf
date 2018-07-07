@@ -1,0 +1,208 @@
+page {
+  background-color: #ececec;
+}
+
+/* 轮播图 */
+
+.slide-image {
+  width: 100%;
+}
+
+swiper {
+  /* margin-top: 20RPX; */
+  margin-bottom: 20rpx;
+}
+
+/* 商品展示 */
+
+.goods {
+  width: 45%;
+  /* float: left; */
+  display: inline-block;
+  padding: 0 2.5%;
+}
+
+.goods-img {
+  width: 100%;
+  vertical-align: top;
+}
+
+.goods-des {
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  display: block;
+  margin-left: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.goods-price {
+  /* display: block; */
+  float: left;
+  margin-left: 10rpx;
+}
+
+.goods-buy {
+  float: right;
+  margin-right: 10rpx;
+}
+
+/* 购买 弹出框*/
+
+.buy-now {
+  width: 100%;
+  height: 400rpx;
+  position: fixed;
+  background: white;
+  bottom: 0;
+  left: 0;
+  /* display: none; */
+  z-index: 15;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0,0,0,0.5);
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 10;
+}
+
+.small-image {
+  width: 50rpx;
+  height: 50rpx;
+  left: 0;
+}
+
+.small-img {
+  width: 180rpx;
+  height: 180rpx;
+  background: green;
+  position: absolute;
+  left: 20rpx;
+  top: -20rpx;
+  z-index: 2;
+  border-radius: 20rpx;
+}
+
+.buy-des {
+  margin-left: 240rpx;
+}
+
+.des-info {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 70%;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.close-buy {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  border: 1rpx solid #000;
+  line-height: 50rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  text-align: center;
+}
+
+.line {
+  border: 2rpx solid #000;
+  margin-left: 20rpx;
+  margin-top: 80rpx;
+}
+
+.buy-amount {
+  display: block;
+  margin-left: 20rpx;
+}
+
+.left-amount {
+  display: block;
+  margin-left: 20rpx;
+}
+
+.amount {
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}
+
+.left-amount {
+  display: block;
+  margin-left: 20rpx;
+}
+
+.amount {
+  margin-top: 20rpx;
+}
+
+.add-minus {
+  position: absolute;
+  right: 20rpx;
+  top: 230rpx;
+  width:200rpx;
+  height:60rpx;
+  border:1px solid #ccc;
+  border-radius:10rpx;
+}
+.add-minus text{
+  width:65rpx;
+  line-height: 60rpx;
+  text-align: center;
+  float: left;
+}
+.add-minus input{
+  width:68rpx;
+  height:60rpx;
+  text-align:center;
+  float:left;
+  border-left:1px solid #ccc;
+  border-right:1px solid #ccc;
+}
+.add-minus .disabled{
+  color:#ccc;
+}
+.add-miuns .normal{
+  color:black;
+}
+
+.joinBuy {
+  width: 100%;
+  height: 80rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.joinBuy view {
+  float: left;
+  width: 50%;
+  text-align: center;
+  line-height: 80rpx;
+  color: white;
+}
+
+.join-cart {
+  background: #000;
+  opacity: 0.8;
+}
+
+.buy-imd {
+  background: red;
+}
+
+.mask {
+  position: absolute;
+  z-index: 5;
+}
