@@ -6,20 +6,7 @@ Page({
   data: {
     BaseUrl: '',
     StaticUrl: '',
-    imgUrls: [
-      {
-        code: 1,
-        img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'
-      },
-      {
-        code: 2,
-        img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'
-      },
-      {
-        code: 3,
-        img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-      }
-    ],
+    imgUrls: [],
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
@@ -30,7 +17,8 @@ Page({
     remainderCount: 1,
     name: '',
     goodsInfo: [],
-    detailImg: ''
+    detailImg: '',
+    selectedCode: ''
   },
 
  
@@ -95,10 +83,11 @@ Page({
   onShareAppMessage: function () {
     
   },
+
   initInfo () {
     let me = this
     wx.request({
-      url: 'http://mock.eolinker.com/AICzS9z07adb008c1874783b6a002ae7092ad3027ddbe32?uri=/home/getGoodsList',
+      url: me.data.BaseUrl + '/home/getGoodsList',
       data: {
 
       },
@@ -116,33 +105,55 @@ Page({
         console.log(err)
       }
     })
-  },   
-  initSwiper () {
-
   },
+
+  initSwiper () {
+    let me = this
+    wx.request({
+      url: me.data.BaseUrl + '/home/getSwiperList',
+      data: {
+
+      },
+      success (res) {
+        if (res.data) {
+          if (res.data.code === 1) {
+            let data = res.data.data
+            me.setData({
+              imgUrls: data
+            })
+          }
+        }
+      }
+    })
+  },
+
   buyOne:function(e){
     let me = this
-    var id=e.currentTarget.id;    
+    let id = e.currentTarget.id
     this.setData({
       display: "block",
       price: me.data.goodsInfo[id].price,
       name: me.data.goodsInfo[id].name,
       buyAmount: 1,
       remainderCount: me.data.goodsInfo[id].count,
-      detailImg: me.data.goodsInfo[id].img
+      detailImg: me.data.goodsInfo[id].img,
+      selectedCode: me.data.goodsInfo[id].code
     })
   },
 
   navSwiper (e) {
-    console.log(getApp().globalData)
-    console.log(e)
-    console.log(e.currentTarget.dataset.code)
+    let code = e.currentTarget.dataset.code
+    wx.navigateTo({
+      url: `../detail/index?id=${code}`
+    })
   },
+
   closeBuy:function(){
     this.setData({
       display:"none"
     })
   },
+
   addAmount:function(){
     var num = this.data.buyAmount;
     num++;
@@ -152,6 +163,7 @@ Page({
       minusStatus: minusStatus
     })
   },
+
   minusAmount:function(){
     var num = this.data.buyAmount;
     if(num>1){
@@ -162,6 +174,40 @@ Page({
       buyAmount:num,
       minusStatus:minusStatus
     })
+  },
+
+  goPay () {
+    let num = this.data.buyAmount
+    let code = this.data.selectedCode
+    wx.navigateTo({
+      url: `../prepay/prepay?code=${code}&num=${num}`
+    })
+  },
+
+  addCar () {
+    let me = this
+    let num = this.data.buyAmount
+    let code = this.data.selectedCode
+    wx.request({
+      url: me.data.BaseUrl + '/home/addToCar',
+      data: {
+        num: num,
+        code: code
+      },
+      success (res) {
+        if (res.data) {
+          if (res.data.code === 1) {
+            // 添加成功 ，弹出对话框
+            me.setData({
+              display: "none"
+            })
+          }
+        }
+      },
+      fail (err) {
+        console.log(err)
+        // 弹框 失败
+      }
+    })
   }
-  
 })

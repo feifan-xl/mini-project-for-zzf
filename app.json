@@ -3,7 +3,8 @@
     "pages/dashboard/index",
     "pages/car/index",
     "pages/center/index",
-    "pages/detail/index"
+    "pages/detail/index",
+    "pages/prepay/prepay"
   ],
   "tabBar": {
     "list": [

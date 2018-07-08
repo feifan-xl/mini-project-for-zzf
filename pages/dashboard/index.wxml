@@ -12,7 +12,7 @@
   <!-- 商品展示 -->
   <view class="goods" wx:for="{{goodsInfo}}" wx:key="{{item.code}}" >
 
-    <image src="{{item.img}}" class="goods-img"></image>
+    <image src="{{item.img}}" class="goods-img" bindtap="navSwiper" data-code="{{item.code}}"></image>
     <text class='goods-des clear-fix'>{{item.name}}</text>
     <p class="goods-price">￥{{item.price}}</p>
     <p class='goods-buy' bindtap="buyOne" id="{{index}}">购买</p>
@@ -40,7 +40,7 @@
     <text class="add" bindtap="addAmount">+</text>
   </view>
   <view class="joinBuy">
-    <view class="join-cart">加入购物车</view>
-    <view class="buy-imd">立即购买</view>
+    <view class="join-cart" bindtap="addCar">加入购物车</view>
+    <view class="buy-imd" bindtap="goPay">立即购买</view>
   </view>
 </view>
